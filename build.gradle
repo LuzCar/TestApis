@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'maven'
+    id 'io.qameta.allure' version '2.8.1'
+}
+group 'RestAssured_API_Febrero2021'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+repositories {
+    mavenCentral()
+    jcenter()
+}
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'com.jayway.jsonpath', name: 'json-path', version: '2.2.0'
+//allure report
+    testImplementation("io.qameta.allure:allure-java-commons:2.8.1")
+    testImplementation("org.slf4j:slf4j-simple:1.7.30")
+    //RestAssured
+    testImplementation 'io.rest-assured:rest-assured:4.3.3'
+    testImplementation 'io.rest-assured:json-path:4.3.3'
+    testImplementation 'io.rest-assured:xml-path:4.3.3'
+    testImplementation 'io.rest-assured:json-schema-validator:4.3.3'
+    testImplementation 'io.rest-assured:spring-mock-mvc:4.3.3'
+    testImplementation 'io.rest-assured:spring-web-test-client:4.3.3'
+    testImplementation 'io.rest-assured:scala-support:4.3.3'
+    testImplementation 'io.rest-assured:kotlin-extensions:4.3.3'
+}
+apply plugin: "io.qameta.allure"
+
+allure {
+    clean = true
+    autoconfigure = true
+    aspectjweaver = true
+    version = '2.8.1'
+    useJUnit4 {
+        version = '2.8.1'
+    }
+}
